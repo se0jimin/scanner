@@ -9,9 +9,20 @@
         <entry key="../../../Documents/scanner/android/app/src/main/res/layout/activity_loading.xml" value="0.12001811594202899" />
         <entry key="../../../Documents/scanner/android/app/src/main/res/layout/activity_main.xml" value="0.26135084541038994" />
         <entry key="../../../Documents/scanner/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.27760416666666665" />
+        <entry key="app/src/main/res/drawable-anydpi/camera_svg.xml" value="0.19537037037037036" />
+        <entry key="app/src/main/res/drawable-anydpi/circle_svg.xml" value="0.19537037037037036" />
+        <entry key="app/src/main/res/drawable-anydpi/tripeDot_svg.xml" value="0.17447916666666666" />
+        <entry key="app/src/main/res/drawable/circle_svg.xml" value="0.19537037037037036" />
+        <entry key="app/src/main/res/drawable/dock.xml" value="0.17447916666666666" />
+        <entry key="app/src/main/res/drawable/rectangle.xml" value="0.19814814814814816" />
+        <entry key="app/src/main/res/drawable/roundstyle.xml" value="0.1016821851152316" />
         <entry key="app/src/main/res/layout/actitivity_home.xml" value="0.17552083333333332" />
+        <entry key="app/src/main/res/layout/activity_base.xml" value="0.16458333333333333" />
+        <entry key="app/src/main/res/layout/activity_edit.xml" value="0.2705244959543937" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.2200173429218455" />
         <entry key="app/src/main/res/layout/activity_loading.xml" value="0.13722826086956522" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.17552083333333332" />
+        <entry key="app/src/main/res/layout/activity_row.xml" value="0.2606333992000083" />
       </map>
     </option>
   </component>

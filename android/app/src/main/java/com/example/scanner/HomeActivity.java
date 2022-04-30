@@ -22,13 +22,13 @@ import androidx.core.content.ContextCompat;
 public class HomeActivity extends Activity {
 
     ImageView homeImage;
-    Button cameraBtn;
+    ImageView cameraPic;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        homeImage = (ImageView) findViewById(R.id.homeScreenBack); //view.findViewbyID
-        cameraBtn = (Button) findViewById(R.id.buttonCamera);
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_home);
+            cameraPic = (ImageView) findViewById(R.id.cameraPic);
+        // connecting with the activity_home.xml and naming of IDS
 
         //request for camera acesss
         if (ContextCompat.checkSelfPermission(
@@ -41,7 +41,7 @@ public class HomeActivity extends Activity {
                     }, 100);
 
             // press button to move to Camera
-            cameraBtn.setOnClickListener(new View.OnClickListener() {
+            cameraPic.setOnClickListener(new View.OnClickListener() {
                 @Override // when there is a parent class, the child kid receives all the ]
                 // information, so when the child class wants to rewrite the code, we use "Override"
                 public void onClick(View view) {
@@ -50,8 +50,8 @@ public class HomeActivity extends Activity {
                     startActivityForResult(intent, 100);
                 }
             });
-
-
+            /*
+            // need another explanation from this part
             final Handler handler = new Handler(Looper.getMainLooper());
             handler.postDelayed(new Runnable() {
                 @Override
@@ -59,16 +59,36 @@ public class HomeActivity extends Activity {
                     Intent intent = new Intent(String.valueOf(this));
                     startActivity(intent);
                 }
-            }, 200); //run after 200 milli sec
+            }, 200); //run after 200 milli sec */
         }
     }
     protected void onActivityResult ( int requestCode, int resultCode, @Nullable Intent data)
     {
+        try {
+        System.out.println("rq: "+ requestCode);
         if (requestCode == 100) {
             //get capture image
             Bitmap captureImage = (Bitmap) data.getExtras().get("data"); //bitmap is a from of image
             //Set Capture Image to ImageView
-            homeImage.setImageBitmap(captureImage);
+            //cameraPic.setImageBitmap(captureImage);
+            //handler --> wait for 2 sec --> intent the homeActivity --> then go to homeActivity
+            final Handler handler = new Handler(Looper.getMainLooper());
+            System.out.println("hi");
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    System.out.println("hey");
+                    try{
+                        System.out.println("yo");
+                        Intent intent = new Intent(getApplicationContext(), EditActivity.class);
+                        startActivity(intent);
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+                }
+            });
+        } } catch (Exception e) {
+            System.out.println(e);
         }
     }
 }

@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Scanner</string>
+
+    <string-array name="animals">
+        <item>bear</item>
+        <item>dog</item>
+        <item>cat</item>
+    </string-array>
+
+    <string-array name="description">
+        <item>This is a bear</item>
+        <item>This is a dog</item>
+        <item>This is a cat</item>
+    </string-array>
 </resources>

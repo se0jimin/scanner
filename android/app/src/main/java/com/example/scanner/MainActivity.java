@@ -11,7 +11,6 @@ import android.widget.ImageView;
 
 public class MainActivity<e_view> extends AppCompatActivity {
 
-
     ImageView imageView; //declaration of variable
 
     @Override
@@ -20,14 +19,18 @@ public class MainActivity<e_view> extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         imageView = (ImageView) findViewById(R.id.imageLoading); //view.findViewbyID
 
+        //handler --> wait for 2 sec --> intent the homeActivity --> then go to homeActivity
         final Handler handler = new Handler(Looper.getMainLooper());
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-            },200);
-
-        }
+                try{
+                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+            }
+        },2000);
     }
 }
