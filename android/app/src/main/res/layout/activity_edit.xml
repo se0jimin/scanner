@@ -3,52 +3,102 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/black" >
 
+    <ImageView
+        android:id="@+id/checkPic"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="170dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/white"
+        android:clickable="true"
+        android:contentDescription="checkPic"
+        android:focusable="true"
+        android:padding="0dp"
+        android:src="@drawable/check"
+        app:iconTint="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.952"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.934"
+        tools:ignore="DuplicateClickableBoundsCheck" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="394dp"
+        android:layout_height="608dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.314"
+        app:srcCompat="@drawable/dog" />
 
     <ImageView
         android:id="@+id/cameraPic"
         android:layout_width="73dp"
         android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="170dp"
         android:background="@drawable/roundstyle"
         android:clickable="true"
-        android:contentDescription="camerPic"
+        android:contentDescription="cameraPic"
         android:focusable="true"
         android:padding="20dp"
         android:src="@drawable/camera_svg"
         app:iconTint="#5B8FDD"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.959" />
+        app:layout_constraintVertical_bias="0.93" />
 
-    <Button
-        android:id="@+id/cameraInEdit"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="710dp"
-        android:backgroundTint="#5B8FDD"
-        android:clickable="false"
-        android:text="PDF SCANNER"
+    <ImageView
+        android:id="@+id/trashPic"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="170dp"
+        android:layout_marginEnd="308dp"
+        android:layout_marginBottom="10dp"
+        android:clickable="true"
+        android:contentDescription="trashPic"
+        android:focusable="true"
+        android:padding="0dp"
+        android:src="@drawable/trash_svg"
+        app:iconTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.952"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.934" />
 
-    <androidx.recyclerview.widget.RecyclerView
+
+    <!-- <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="633dp"
+        android:scrollbars="vertical"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.614"
-        app:spanCount="2"/>
+        app:layout_constraintTop_toBottomOf="@id/imageView"
+        app:layout_constraintVertical_bias="0.0"
+        app:spanCount="2" >
 
+    </androidx.recyclerview.widget.RecyclerView> -->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

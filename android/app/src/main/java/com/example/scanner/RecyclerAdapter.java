@@ -10,26 +10,37 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.BreakIterator;
+
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyViewHolder> {
     String data[];
     int images[];
     Context context;
     String description[];
 
-    public RecyclerAdapter(Context context, String data[], String description[], int images[]) {
+    public RecyclerAdapter(String[] data, Context context, int[] images, String[] description) {
         this.context = context;
         this.data = data;
         this.images = images;
-        this.description = description;
+       this.description = description;
     }
-
-
+    
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.activity_row, parent, false);
-        return new MyViewHolder(view);
+                    System.out.println("OnCreateViewHolder");
+        //LayoutInflater inflater = LayoutInflater.from(context);
+        //View view = inflater.inflate(R.layout.activity_row, parent, false);
+        //return new MyViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.activity_row, parent, false);
+        return new  MyViewHolder((View) view);
+
+//         View view = LayoutInflater.from(parent.getContext())
+//                .inflate(R.layout.adapter_textview, parent, false);
+//
+//        MyViewHolder viewHolder = new MyViewHolder((TextView) view);
+//        return viewHolder;
     }
 
 
@@ -38,26 +49,38 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
         holder.titleText.setText(data[position]);
         holder.myImageView.setImageResource(images[position]);
         holder.myImageView.setImageResource(images[position]);
+        //holder.View.setText(data[position]);
+
     }
 
     @Override
     public int getItemCount() {
-        System.out.println("^^ " + images.length);
-        return images.length;
+        System.out.println("^^ " + data.length);
+        return data.length;
     }
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
         TextView titleText, descriptionText;
         ImageView myImageView;
+        View itemView;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            System.out.println("hi");
+            this.itemView = itemView;
+            System.out.println("newViewHolder");
             titleText = itemView.findViewById(R.id.titleText);
             descriptionText = itemView.findViewById(R.id.descriptionText);
+            System.out.println("singing~~");
             myImageView = itemView.findViewById(R.id.myImageView);
 
-        }
+//        public View view;
+//        public BreakIterator titleText;
+
+//        public MyViewHolder(View view) {
+//            super(view);
+//            this.view = view;
+
+       }
     }
 }

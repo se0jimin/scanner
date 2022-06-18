@@ -25,7 +25,7 @@ public class MainActivity<e_view> extends AppCompatActivity {
             @Override
             public void run() {
                 try{
-                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), HomeActivityBackUp.class);
                     startActivity(intent);
                 } catch (Exception e) {
                     System.out.println(e);

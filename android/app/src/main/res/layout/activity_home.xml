@@ -9,7 +9,7 @@
     android:visibility="visible"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    tools:context=".HomeActivity">
+    tools:context=".HomeActivityBackUp">
 
 
     <!-- <Button
@@ -162,6 +162,20 @@
         app:layout_constraintStart_toStartOf="@+id/heading_dock"
         app:layout_constraintTop_toTopOf="@+id/heading_dock"
         app:layout_constraintVertical_bias="1.0" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="405dp"
+        android:layout_height="418dp"
+        android:scrollbars="vertical"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintBottom_toBottomOf="@id/dock"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/heading_dock"
+        app:layout_constraintVertical_bias="0.024"
+        app:spanCount="2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
