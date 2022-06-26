@@ -24,10 +24,7 @@
             android:name=".EditActivity"
             android:exported="true">
         </activity>
-        <activity
-            android:name=".CompileActivity"
-            android:exported="true">
-        </activity>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"

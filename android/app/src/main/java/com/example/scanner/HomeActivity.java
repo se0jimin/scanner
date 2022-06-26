@@ -34,12 +34,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 
 public class HomeActivity extends Activity {
 
     ImageView cameraPic;
+    static ArrayList<Bitmap> savedImages;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 //        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
@@ -48,6 +50,7 @@ public class HomeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home); // connecting with the activity_home.xml and naming of IDS
         cameraPic = (ImageView) findViewById(R.id.cameraPic);
+        savedImages = new ArrayList<Bitmap>(); //TODO: implement save and load features
 
         RecyclerView recyclerView;
 
