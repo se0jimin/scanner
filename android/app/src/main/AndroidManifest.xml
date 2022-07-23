@@ -24,6 +24,10 @@
             android:name=".EditActivity"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".OutputActivity"
+            android:exported="true">
+        </activity>
 
         <provider
             android:name="androidx.core.content.FileProvider"

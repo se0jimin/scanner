@@ -1,47 +1,29 @@
 package com.example.scanner;
 
-import static android.provider.MediaStore.ACTION_IMAGE_CAPTURE;
-import static androidx.core.content.ContextCompat.startActivity;
-
-import android.Manifest;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.StrictMode;
-import android.provider.MediaStore;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
-import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Objects;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class HomeActivity extends Activity {
 
     ImageView cameraPic;
-    static ArrayList<Bitmap> savedImages;
+    static LinkedList<Bitmap> savedImages;
+    static LinkedList<Uri> savedImagesUri;
+    static boolean firstTimeCalling;
+    static Uri photoUri;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 //        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
@@ -50,7 +32,9 @@ public class HomeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home); // connecting with the activity_home.xml and naming of IDS
         cameraPic = (ImageView) findViewById(R.id.cameraPic);
-        savedImages = new ArrayList<Bitmap>(); //TODO: implement save and load features
+        savedImages = new LinkedList<>(); //TODO: implement save and load features
+        savedImagesUri = new LinkedList<Uri>();
+        firstTimeCalling = true;
 
         RecyclerView recyclerView;
 
