@@ -31,6 +31,7 @@ import com.itextpdf.layout.element.Image;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.text.DateFormat;
@@ -49,6 +50,24 @@ public class EditActivity extends Activity {
     ImageView hori1;
     ImageView hori2;
     ImageView hori3;
+    ImageView hori4;
+    ImageView hori5;
+    ImageView hori6;
+    ImageView hori7;
+    ImageView hori8;
+    ImageView hori9;
+    ImageView hori10;
+    ImageView hori11;
+    ImageView hori12;
+    ImageView hori13;
+    ImageView hori14;
+    ImageView hori15;
+    ImageView hori16;
+    ImageView hori17;
+    ImageView hori18;
+    ImageView hori19;
+    ImageView hori20;
+
     static String imageNum = "";
 //        int images[] = {R.drawable.bear, R.drawable.dog, R.drawable.cat, R.drawable.elephant};
 //        String names[] = {"William", "Brian", "Elizabeth", "Job"};
@@ -65,11 +84,45 @@ public class EditActivity extends Activity {
         hori1 = (ImageView)findViewById(R.id.hori1);
         hori2 = (ImageView)findViewById(R.id.hori2);
         hori3 = (ImageView)findViewById(R.id.hori3);
+        hori4 = (ImageView)findViewById(R.id.hori4);
+        hori5 = (ImageView)findViewById(R.id.hori5);
+        hori6 = (ImageView)findViewById(R.id.hori6);
+        hori7 = (ImageView)findViewById(R.id.hori7);
+        hori8 = (ImageView)findViewById(R.id.hori8);
+        hori9 = (ImageView)findViewById(R.id.hori9);
+        hori10 = (ImageView)findViewById(R.id.hori10);
+        hori11 = (ImageView)findViewById(R.id.hori11);
+        hori12 = (ImageView)findViewById(R.id.hori12);
+        hori13 = (ImageView)findViewById(R.id.hori13);
+        hori14 = (ImageView)findViewById(R.id.hori14);
+        hori15 = (ImageView)findViewById(R.id.hori15);
+        hori16 = (ImageView)findViewById(R.id.hori16);
+        hori17 = (ImageView)findViewById(R.id.hori17);
+        hori18 = (ImageView)findViewById(R.id.hori18);
+        hori19 = (ImageView)findViewById(R.id.hori19);
+        hori20 = (ImageView)findViewById(R.id.hori20);
 
         ArrayList<ImageView> imageViewList = new ArrayList<ImageView>();
         imageViewList.add(hori1);
         imageViewList.add(hori2);
         imageViewList.add(hori3);
+        imageViewList.add(hori4);
+        imageViewList.add(hori5);
+        imageViewList.add(hori6);
+        imageViewList.add(hori7);
+        imageViewList.add(hori8);
+        imageViewList.add(hori9);
+        imageViewList.add(hori10);
+        imageViewList.add(hori11);
+        imageViewList.add(hori12);
+        imageViewList.add(hori13);
+        imageViewList.add(hori14);
+        imageViewList.add(hori15);
+        imageViewList.add(hori16);
+        imageViewList.add(hori17);
+        imageViewList.add(hori18);
+        imageViewList.add(hori19);
+        imageViewList.add(hori20);
 
         imageView.setImageURI(HomeActivity.photoUri);
         if (HomeActivity.savedImages.size() >= 1) {
@@ -82,6 +135,74 @@ public class EditActivity extends Activity {
 
         if (HomeActivity.savedImages.size() >= 3) {
             hori3.setImageBitmap(HomeActivity.savedImages.get(2));
+
+        }
+        if (HomeActivity.savedImages.size() >= 4) {
+            hori4.setImageBitmap(HomeActivity.savedImages.get(3));
+
+        }
+        if (HomeActivity.savedImages.size() >= 5) {
+            hori5.setImageBitmap(HomeActivity.savedImages.get(4));
+
+        }
+        if (HomeActivity.savedImages.size() >= 6) {
+            hori6.setImageBitmap(HomeActivity.savedImages.get(5));
+
+        }
+        if (HomeActivity.savedImages.size() >= 7) {
+            hori7.setImageBitmap(HomeActivity.savedImages.get(6));
+
+        }
+        if (HomeActivity.savedImages.size() >= 8) {
+            hori8.setImageBitmap(HomeActivity.savedImages.get(7));
+
+        }
+        if (HomeActivity.savedImages.size() >= 9) {
+            hori9.setImageBitmap(HomeActivity.savedImages.get(8));
+
+        }
+        if (HomeActivity.savedImages.size() >= 10) {
+            hori10.setImageBitmap(HomeActivity.savedImages.get(9));
+
+        }
+        if (HomeActivity.savedImages.size() >= 11) {
+            hori11.setImageBitmap(HomeActivity.savedImages.get(10));
+
+        }
+        if (HomeActivity.savedImages.size() >= 12) {
+            hori12.setImageBitmap(HomeActivity.savedImages.get(11));
+
+        }
+        if (HomeActivity.savedImages.size() >= 13) {
+            hori13.setImageBitmap(HomeActivity.savedImages.get(12));
+
+        }
+        if (HomeActivity.savedImages.size() >= 14) {
+            hori14.setImageBitmap(HomeActivity.savedImages.get(13));
+
+        }
+        if (HomeActivity.savedImages.size() >= 15) {
+            hori15.setImageBitmap(HomeActivity.savedImages.get(14));
+
+        }
+        if (HomeActivity.savedImages.size() >= 16) {
+            hori16.setImageBitmap(HomeActivity.savedImages.get(15));
+
+        }
+        if (HomeActivity.savedImages.size() >= 17) {
+            hori17.setImageBitmap(HomeActivity.savedImages.get(16));
+
+        }
+        if (HomeActivity.savedImages.size() >= 18) {
+            hori18.setImageBitmap(HomeActivity.savedImages.get(17));
+
+        }
+        if (HomeActivity.savedImages.size() >= 19) {
+            hori19.setImageBitmap(HomeActivity.savedImages.get(18));
+
+        }
+        if (HomeActivity.savedImages.size() >= 20) {
+            hori20.setImageBitmap(HomeActivity.savedImages.get(19));
 
         }
 
@@ -122,9 +243,15 @@ public class EditActivity extends Activity {
                     document.setMargins(0, 0, 0, 0);
 
                     //image 작업
-                    for (int i = 0; i < HomeActivity.savedImages.size(); i++) {
+                    int numOfSavedImages = HomeActivity.savedImages.size();
+                    System.out.println("알콩달콩 " + numOfSavedImages);
+                    for (int i = 0; i < numOfSavedImages; i++) {
                         Bitmap image = HomeActivity.savedImages.remove();
-                        HomeActivity.savedImages.remove();
+//                        Bitmap imageForSave = image;
+//                        FileOutputStream out = new FileOutputStream(imageNum);
+//                        imageForSave.compress(Bitmap.CompressFormat.PNG, 100, out); // bmp is your Bitmap instance
+//                            // PNG is a lossless format, the compression factor (100) is ignored
+                        HomeActivity.savedImagesUri.remove();
                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
                         image.compress( Bitmap.CompressFormat.JPEG, 100, stream);
                         byte[] byteArray = stream.toByteArray();
@@ -135,17 +262,17 @@ public class EditActivity extends Activity {
                     }
                     document.close();
 // dialog
-//                    new AlertDialog.Builder(getApplicationContext())
-//                            .setTitle("SUCESSFUL CONVERSION~~")
-//                            .setMessage("Have a great day!!")
-//                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-//                                public void onClick(DialogInterface dialog, int which) {
-//                                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-//                                    startActivity(intent);
-//                                }
-//                            })
-//                            .setIcon(android.R.drawable.ic_dialog_info)
-//                            .show();
+                    new AlertDialog.Builder(EditActivity.this)
+                            .setTitle("SUCESSFUL CONVERSION~~")
+                            .setMessage("Have a great day!!")
+                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                                    startActivity(intent);
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_info)
+                            .show();
 
                     //    Intent intent = new Intent(getApplicationContext(), OutputActivity.class);
                     //     startActivity(intent);

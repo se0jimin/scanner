@@ -3,27 +3,85 @@ package com.example.scanner;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.ParcelFileDescriptor;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
+import com.github.barteksc.pdfviewer.*;
+import com.shockwave.pdfium.PdfDocument;
+import com.shockwave.pdfium.PdfiumCore;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class HomeActivity extends Activity {
 
     ImageView cameraPic;
+    TextView defaultText;
     static LinkedList<Bitmap> savedImages;
     static LinkedList<Uri> savedImagesUri;
     static boolean firstTimeCalling;
     static Uri photoUri;
+
+    void generateImageFromPdf(Uri pdfUri) {
+        int pageNumber = 0;
+        PdfiumCore pdfiumCore = new PdfiumCore(this);
+        try {
+            //http://www.programcreek.com/java-api-examples/index.php?api=android.os.ParcelFileDescriptor
+            ParcelFileDescriptor fd = getContentResolver().openFileDescriptor(pdfUri, "r");
+            PdfDocument pdfDocument = pdfiumCore.newDocument(fd);
+            pdfiumCore.openPage(pdfDocument, pageNumber);
+            int width = pdfiumCore.getPageWidthPoint(pdfDocument, pageNumber);
+            int height = pdfiumCore.getPageHeightPoint(pdfDocument, pageNumber);
+            Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+            pdfiumCore.renderPageBitmap(pdfDocument, bmp, pageNumber, 0, 0, width, height);
+            saveImage(bmp);
+            pdfiumCore.closeDocument(pdfDocument); // important!
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public final static String FOLDER = Environment.getExternalStorageDirectory() + "/Pictures";
+    private void saveImage(Bitmap bmp) {
+        FileOutputStream out = null;
+        try {
+            File folder = new File(FOLDER);
+            if(!folder.exists())
+                folder.mkdirs();
+            File file = new File(folder, EditActivity.imageNum + "PDF.png");
+            out = new FileOutputStream(file);
+            bmp.compress(Bitmap.CompressFormat.PNG, 100, out); // bmp is your Bitmap instance
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            try {
+                if (out != null)
+                    out.close();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 //        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
@@ -34,13 +92,64 @@ public class HomeActivity extends Activity {
         cameraPic = (ImageView) findViewById(R.id.cameraPic);
         savedImages = new LinkedList<>(); //TODO: implement save and load features
         savedImagesUri = new LinkedList<Uri>();
+        defaultText = (TextView) findViewById(R.id.defaultText);
         firstTimeCalling = true;
 
         RecyclerView recyclerView;
 
-        int images[] = {R.drawable.i_sample, R.drawable.p1, R.drawable.i_sample, R.drawable.p1};
-        String names[] = {"sampleA", "sampleB", "sampleC", "sampleD"};
-        String description[] = {"This is a bear", "This is a dog", "This is a cat","This is an elephant"};
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inSampleSize = 5;
+        final Bitmap b = BitmapFactory.decodeFile("/storage/emulated/0/Pictures/IMG07302022061119.jpg",options);
+
+        String path = Environment.getExternalStorageDirectory().toString()+"/Documents";
+        System.out.println("Checking path " + path);
+        File directory = new File(path);
+        File[] files = directory.listFiles((dir, name) -> name.toLowerCase().endsWith(".pdf"));
+//        Arrays.sort(files, new Comparator<File>(){
+//            public int compare(File f1, File f2)
+//            {
+//                return Long.valueOf(f1.lastModified()).compareTo(f2.lastModified());
+//            } });
+//        Arrays.sort(files, Comparator.comparingLong(File::lastModified));
+        Arrays.sort(files, Comparator.comparingLong(File::lastModified).reversed());
+
+        if (files.length != 0) {
+            defaultText.setVisibility(View.GONE);
+        }
+
+        Bitmap images[] = new Bitmap[4];
+        //int images[] = {R.drawable.i_sample, R.drawable.p1, R.drawable.i_sample, R.drawable.p1};
+        String names[] = new String[4];
+        String description[] = new String[4];
+
+
+        for (int i = 0; i < Math.min(files.length, 4); i++)
+        {
+            Uri uri = Uri.fromFile(files[i]);
+            System.out.println("숏다리 매운맛 " + uri);
+            generateImageFromPdf(uri);
+
+            String pngName = files[i].getName();
+            System.out.println("FileName:" + pngName);
+            long createdDate = files[i].lastModified();
+            Date d = new Date(createdDate);
+            SimpleDateFormat df = new SimpleDateFormat("EEE MMM dd yyyy h:mm a");
+            String d2 = df.format(d);
+            System.out.println(d2);
+            names[i] = files[i].getName();
+            description[i] = d2;
+
+
+            java.io.FileInputStream in = null;
+            try {
+                in = new java.io.FileInputStream( new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/" + pngName.substring(0, pngName.length() - 4) + "PDF.png"));
+                Bitmap bm = BitmapFactory.decodeStream(in);
+                images[i] = bm;
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);

@@ -46,9 +46,9 @@ public class HomeActivityBackUp extends Activity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
 
-        RecyclerAdapter recyclerAdapter = new RecyclerAdapter (names, this, images, description);
-        recyclerView.setAdapter(recyclerAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //RecyclerAdapter recyclerAdapter = new RecyclerAdapter (names, this, images, description);
+//        recyclerView.setAdapter(recyclerAdapter);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         //request for camera acesss
         if (ContextCompat.checkSelfPermission(

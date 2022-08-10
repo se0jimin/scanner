@@ -27,32 +27,34 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:scaleType="fitStart"
+        android:paddingRight="5dp"
         android:src="@drawable/rectangle"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/titleText"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.045"
+
         app:srcCompat="@drawable/ic_launcher_foreground" />
 
     <TextView
         android:id="@+id/titleText"
-        android:layout_width="125dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_gravity="left"
         android:layout_marginTop="8dp"
         android:text="Title"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/myImageView"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintTop_toTopOf="@+id/myImageView" />
 
     <TextView
         android:id="@+id/descriptionText"
-        android:layout_width="78dp"
-        android:layout_height="21dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Description"
         app:layout_constraintStart_toStartOf="@+id/titleText"
         app:layout_constraintTop_toBottomOf="@+id/titleText" />
